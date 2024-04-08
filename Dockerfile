@@ -7,14 +7,17 @@ COPY . .
 # Install yarn using official installation script
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.10
 
+# Install concurrently 
+RUN yarn global add concurrently 
+
 # Add yarn to the PATH
 ENV PATH="/root/.yarn/bin:${PATH}"
 
 # Install server dependencies
 RUN npm install --legacy-peer-deps
 
-# Install client dependencies
-RUN cd client/ && npm install --legacy-peer-deps
+# Install client dependencies 
+RUN cd client/ && npm install --legacy-peer-deps 
 
 EXPOSE 3000
 EXPOSE 8080
